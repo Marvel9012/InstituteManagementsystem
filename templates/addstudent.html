@@ -1,0 +1,54 @@
+{% extends 'navbar.html' %}
+
+{% block content%}
+
+<h2 align="center">Add Student Data </h2>
+
+<form action="readdata" method="post">
+  {% csrf_token %}
+
+  <h3 align="center" style="color:red">{{ data }}</h3>
+
+  <table align="center">
+    <tr>
+      <td> Name: </td>
+      <td> <input type="text" name="txtName"> </td>
+    </tr>
+    <tr>
+      <td> Age:</td>
+      <td> <input type="number" name="txtAge"> </td>
+    </tr>
+    <tr>
+      <td> Phno:</td>
+      <td> <input type="number" name="txtPhno"> </td>
+    </tr>
+    <tr>
+        <td> City:</td>
+        <td>
+            <select name="ddlCity">
+                {% for i in City_Data %}
+                    <option>{{ i.City_name }}</option>
+                {% endfor %}
+
+
+            </select>
+        </td>
+    </tr>
+      <tr>
+        <td> Course:</td>
+        <td>
+            <select name="ddlCourse">
+                {% for i in Course_Data %}
+                    <option>{{ i.Course_name }}</option>
+                {% endfor %}
+
+            </select>
+        </td>
+    </tr>
+      <td><input type="submit" name="btnsub" value="AddStudent"> </td>
+  </table>
+
+
+
+</form>
+{% endblock %}
